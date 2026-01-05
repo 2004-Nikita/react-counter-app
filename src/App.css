@@ -1,38 +1,107 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Light + Dark mode background with subtle animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(-45deg, #a1c4fd, #c2e9fb, #fbc2eb, #a6c1ee);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  transition: background 0.5s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.App.dark {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Counter container styling */
+.counter-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px 70px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  text-align: center;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.App.dark .counter-container {
+  background: rgba(30, 30, 30, 0.9);
+  color: #fff;
+}
+
+/* Heading */
+h1 {
+  margin-bottom: 25px;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
+
+/* Count number */
+.count {
+  font-size: 5rem;
+  margin: 25px 0;
+  color: #007bff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Pop animation for count */
+.count.pop {
+  transform: scale(1.4);
+  color: #28a745;
+}
+
+/* Buttons container */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+/* Buttons styling */
+.btn {
+  padding: 12px 28px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Specific buttons colors */
+.increment { background-color: #28a745; color: white; }
+.decrement { background-color: #dc3545; color: white; }
+.reset { background-color: #6c757d; color: white; }
+.mode-toggle { background-color: #007bff; color: white; }
+
+/* Button hover effect */
+.btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  opacity: 0.95;
+}
+
+/* Dark mode button colors */
+.App.dark .increment { background-color: #00c851; }
+.App.dark .decrement { background-color: #ff4444; }
+.App.dark .reset { background-color: #555; }
+.App.dark .mode-toggle { background-color: #33b5e5; }
+
+/* Dark mode container transition */
+.mode-toggle {
+  margin-top: 10px;
 }
